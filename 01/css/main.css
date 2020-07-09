@@ -54,3 +54,30 @@ a:link {
 .local-nav-links a:not(.product-name) {
     margin-left: 2em;
 }
+
+.sticky-elem {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    display: none;
+}
+
+@media(min-width: 1024px){
+    #scroll-section-0 h1 {
+        font-size: 9vw;
+    }
+    .main-message {
+        font-size: 4vw;
+    }
+    .description {
+        font-size: 4vw;
+    }
+}
+
+#show-scene-0 #scroll-section-0 .sticky-elem,
+#show-scene-1 #scroll-section-1 .sticky-elem,
+#show-scene-2 #scroll-section-2 .sticky-elem,
+#show-scene-3 #scroll-section-3 .sticky-elem {
+    display: block;
+}
