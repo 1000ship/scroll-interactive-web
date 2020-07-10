@@ -57,18 +57,27 @@ a:link {
 
 .sticky-elem {
     position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
+}
+
+.container {
+    max-width: 1024px;
+    margin: auto;
 }
 
 /* @media(min-width: 1024px){ */
     #scroll-section-0 h1 {
         font-size: 9vw;
+        width: 100%;
+        text-align: center;
+        margin-top: 200px;
     }
     .main-message {
         font-size: 4vw;
+
     }
     .description {
         font-size: 4vw;
@@ -80,8 +89,4 @@ a:link {
 #show-scene-2 #scroll-section-2 .sticky-elem,
 #show-scene-3 #scroll-section-3 .sticky-elem {
     display: block;
-}
-
-.scroll-section {
-    border: 1px solid red;
 }

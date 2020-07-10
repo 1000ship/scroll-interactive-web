@@ -3,18 +3,25 @@
     {
       // 0
       type: "sticky",
-      heightNum: 5, // 브라우저 높이의 5배로 scrollHeight 세팅
+      heightNum: 4, // 브라우저 높이의 5배로 scrollHeight 세팅
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#scroll-section-0"),
-        messageA: document.querySelector("#scroll-section-0 .main-message.a"),
-        messageB: document.querySelector("#scroll-section-0 .main-message.b"),
-        messageC: document.querySelector("#scroll-section-0 .main-message.c"),
-        messageD: document.querySelector("#scroll-section-0 .main-message.d"),
+        messageA: document.querySelector("#scroll-section-0 .main-message-a"),
+        messageB: document.querySelector("#scroll-section-0 .main-message-b"),
+        messageC: document.querySelector("#scroll-section-0 .main-message-c"),
+        messageD: document.querySelector("#scroll-section-0 .main-message-d"),
       },
-      value: {
-        messageA_opacity: [0, 1],
-      },
+      values: [
+        {extra: {left:true, right:false}, low: 0, high: 1, range: { start: 0.1, end: 0.2 }, obj: 'messageA'},
+        {extra: {left:false,right: true}, low: 1, high: 0, range: { start: 0.1+0.1, end: 0.2+0.1 }, obj: 'messageA'},
+        {extra: {left:true, right:false}, low: 0, high: 1, range: { start: 0.3, end: 0.4 }, obj: 'messageB'},
+        {extra: {left:false,right: true}, low: 1, high: 0, range: { start: 0.3+0.1, end: 0.4+0.1 }, obj: 'messageB'},
+        {extra: {left:true, right:false}, low: 0, high: 1, range: { start: 0.5, end: 0.6 }, obj: 'messageC'},
+        {extra: {left:false,right: true}, low: 1, high: 0, range: { start: 0.5+0.1, end: 0.6+0.1 }, obj: 'messageC'},
+        {extra: {left:true, right:false}, low: 0, high: 1, range: { start: 0.7, end: 0.8 }, obj: 'messageD'},
+        {extra: {left:false,right: true}, low: 1, high: 0, range: { start: 0.7+0.1, end: 0.8+0.1 }, obj: 'messageD'},
+      ],
     },
     {
       // 1
@@ -78,19 +85,56 @@
     playAnimation();
   }
 
+  function calcValues(values, currentYOffset) {
+    let rv;
+    const scrollHeight = sceneInfo[currentScene].scrollHeight;
+    const scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+    const {low, high, range, extra} = values;
+    if (range) {
+      const { start, end } = range;
+      const partScrollStart = start * scrollHeight;
+      const partScrollEnd = end * scrollHeight;
+      const partScrollHeight = partScrollEnd - partScrollStart;
+      rv =
+        currentYOffset < partScrollStart
+          ? low
+          : currentYOffset > partScrollEnd
+          ? high
+          : ((currentYOffset - partScrollStart) / partScrollHeight) *
+              (high - low) +
+            low;
+    } else {
+      rv = scrollRatio * (high - low) + low;
+    }
+    return rv;
+  }
+
   function playAnimation() {
+    const { objs, values } = sceneInfo[currentScene];
+    const currentYOffset = yOffset - prevScrollHeight;
+    const scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+
     switch (currentScene) {
       case 0:
-        console.log('0 play')
+        values.forEach( value => {
+          const {obj, extra, range} = value;
+          if(extra && range){
+            if(!extra.left && scrollRatio < range.start)
+              return;
+            if(!extra.right && scrollRatio > range.end)
+              return;
+          }
+          objs[obj].style.opacity = calcValues( value, currentYOffset )
+        })
         break;
       case 1:
-        console.log('1 play')
+        console.log("1 play");
         break;
       case 2:
-        console.log('2 play')
+        console.log("2 play");
         break;
       case 3:
-        console.log('3 play')
+        console.log("3 play");
         break;
     }
   }
