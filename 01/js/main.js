@@ -42,10 +42,35 @@
     // 각 스크롤 섹션의 높이 세팅
     sceneInfo.forEach((info) => {
       info.scrollHeight = info.heightNum * window.innerHeight;
-      info.objs.container.style.height = `${info.scrollHeight}px`
+      info.objs.container.style.height = `${info.scrollHeight}px`;
     });
     console.log(sceneInfo);
   }
+
+  let yOffset = 0;
+  let prevScrollHeight = 0;
+  let currentScene = 0;
+  function scrollLoop() {
+    yOffset = window.pageYOffset;
+    prevScrollHeight = 0;
+    sceneInfo.forEach((info, index) =>
+      index < currentScene ? (prevScrollHeight += info.scrollHeight) : true
+    );
+
+    if (yOffset >= 0 && yOffset < prevScrollHeight) {
+      currentScene -= 1;
+    }
+    if (
+      currentScene < sceneInfo.length &&
+      yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight
+    ) {
+      currentScene += 1;
+    }
+  }
+
   setSetting();
-  window.addEventListener('resize', setSetting);
+  window.addEventListener("resize", setSetting);
+  window.addEventListener("scroll", () => {
+    scrollLoop();
+  });
 })();
