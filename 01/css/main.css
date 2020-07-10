@@ -66,6 +66,7 @@ a:link {
 .container {
     max-width: 1024px;
     margin: auto;
+    padding: 0px 50px;
 }
 
 /* @media(min-width: 1024px){ */
@@ -81,6 +82,14 @@ a:link {
     }
     .description {
         font-size: 4vw;
+    }
+
+    #scroll-section-1 p {
+        font-size: 3vw;
+    }
+
+    #scroll-section-1 strong {
+        font-size: 5vw;
     }
 /* } */
 
