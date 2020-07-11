@@ -4,7 +4,8 @@
   "description": "practice for scroll animation in HTML5/CSS/JS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy02": "gh-pages -d 02_VideoTest"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/1000ship/scroll-interactive-web/issues"
   },
-  "homepage": "https://github.com/1000ship/scroll-interactive-web#readme",
+  "homepage": "https://github.com/1000ship/scroll-interactive-web",
   "dependencies": {
     "gh-pages": "^3.1.0"
   }
