@@ -99,3 +99,7 @@ a:link {
 #show-scene-3 #scroll-section-3 .sticky-elem {
     display: block;
 }
+
+.scroll-section {
+    border: 1px solid red;
+}

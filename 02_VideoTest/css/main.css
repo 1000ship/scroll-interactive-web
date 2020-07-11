@@ -1,0 +1,24 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#bgImage {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: url(../img/puppy/frame-0.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px);
+}
+
+#scrollImage {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+}
