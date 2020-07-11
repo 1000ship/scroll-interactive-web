@@ -11,6 +11,9 @@
         messageB: document.querySelector("#scroll-section-0 .main-message-b"),
         messageC: document.querySelector("#scroll-section-0 .main-message-c"),
         messageD: document.querySelector("#scroll-section-0 .main-message-d"),
+        canvas: document.querySelector("#video-canvas-0"),
+        context: document.querySelector("#video-canvas-0").getContext('2d'),
+        videoImages: []
       },
       values: [
         {

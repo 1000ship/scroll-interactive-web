@@ -70,27 +70,39 @@ a:link {
 }
 
 /* @media(min-width: 1024px){ */
-    #scroll-section-0 h1 {
-        font-size: 9vw;
-        width: 100%;
-        text-align: center;
-        margin-top: 200px;
-    }
-    .main-message {
-        font-size: 4vw;
+#scroll-section-0 #video-canvas-0 {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    border: 5px solid blue;
+}
 
-    }
-    .description {
-        font-size: 4vw;
-    }
+#scroll-section-0 h1 {
+    font-size: 9vw;
+    width: 100%;
+    text-align: center;
+    margin-top: 200px;
+}
 
-    #scroll-section-1 p {
-        font-size: 3vw;
-    }
+.main-message {
+    font-size: 4vw;
 
-    #scroll-section-1 strong {
-        font-size: 5vw;
-    }
+}
+
+.description {
+    font-size: 4vw;
+}
+
+#scroll-section-1 p {
+    font-size: 3vw;
+}
+
+#scroll-section-1 strong {
+    font-size: 5vw;
+}
+
 /* } */
 
 #show-scene-0 #scroll-section-0 .sticky-elem,
