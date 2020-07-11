@@ -22,3 +22,12 @@ body {
     transform: translate(-50%, -50%);
     width: 100vw;
 }
+
+#loadingText {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform:  translate(-50%, -50%);
+    font-size: 4vw;
+    font-weight: 900;
+}
